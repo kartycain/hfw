@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HFW Longevity — Web Strategy & Competitor Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue-50: #f0f7ff;
+    --blue-100: #dbeeff;
+    --blue-200: #bfddff;
+    --blue-400: #60a5fa;
+    --blue-500: #3b82f6;
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --teal-400: #2dd4bf;
+    --teal-500: #14b8a6;
+    --teal-600: #0d9488;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+    --gold: #d4a853;
+    --red-soft: #fca5a5;
+    --green-soft: #86efac;
+    --yellow-soft: #fde68a;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--blue-50);
+    color: var(--slate-800);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--blue-100);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    box-shadow: 0 1px 8px rgba(37,99,235,0.06);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--blue-700);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .nav-brand .dot {
+    width: 8px; height: 8px;
+    background: var(--teal-500);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .nav-links {
+    display: flex;
+    gap: 6px;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    color: var(--slate-600);
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    background: var(--blue-600);
+    color: white;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a4a6e 40%, #0e7490 100%);
+    padding: 72px 2rem 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(ellipse, rgba(45,212,191,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-400);
+    background: rgba(45,212,191,0.12);
+    border: 1px solid rgba(45,212,191,0.3);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    color: white;
+    font-weight: 700;
+    line-height: 1.18;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal-400);
+  }
+  .hero p {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    max-width: 580px;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+
+  /* ── SECTION TABS ── */
+  .section-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 28px 2rem 0;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    cursor: pointer;
+    border: 1.5px solid var(--blue-200);
+    background: white;
+    color: var(--slate-600);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 10px 22px;
+    border-radius: 24px;
+    transition: all 0.22s;
+    letter-spacing: 0.01em;
+  }
+  .tab-btn:hover { border-color: var(--blue-500); color: var(--blue-600); }
+  .tab-btn.active {
+    background: var(--blue-600);
+    border-color: var(--blue-600);
+    color: white;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.25);
+  }
+
+  /* ── SECTIONS ── */
+  .section-content { display: none; }
+  .section-content.active { display: block; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 2rem; }
+
+  /* ── PART I: ROADMAP ── */
+  .section-header {
+    margin-bottom: 36px;
+  }
+  .section-header .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-600);
+    margin-bottom: 8px;
+  }
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--slate-900);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  .section-header p {
+    color: var(--slate-500);
+    margin-top: 10px;
+    max-width: 600px;
+    font-size: 0.95rem;
+  }
+
+  /* Phase blocks */
+  .phase-grid { display: grid; gap: 20px; }
+
+  .phase-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--blue-100);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.05);
+    transition: box-shadow 0.2s;
+  }
+  .phase-card:hover { box-shadow: 0 6px 24px rgba(37,99,235,0.1); }
+
+  .phase-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .phase-badge {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 12px;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .phase-badge.phase1 { background: #dbeafe; color: #1d4ed8; }
+  .phase-badge.phase2 { background: #d1fae5; color: #065f46; }
+  .phase-badge.phase3 { background: #fef3c7; color: #92400e; }
+  .phase-badge.phase4 { background: #ede9fe; color: #5b21b6; }
+  .phase-badge.phase5 { background: #fee2e2; color: #991b1b; }
+
+  .phase-title {
+    font-weight: 600;
+    color: var(--slate-800);
+    font-size: 1rem;
+  }
+  .phase-days {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--slate-500);
+    text-align: right;
+  }
+  .phase-chevron {
+    font-size: 0.9rem;
+    color: var(--slate-400);
+    transition: transform 0.25s;
+    margin-left: 8px;
+  }
+  .phase-card.open .phase-chevron { transform: rotate(180deg); }
+
+  .phase-body {
+    display: none;
+    padding: 0 22px 22px;
+    border-top: 1px solid var(--blue-50);
+  }
+  .phase-card.open .phase-body { display: block; }
+
+  .page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  .page-card {
+    background: var(--slate-50);
+    border: 1px solid var(--slate-200);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .page-card .page-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--blue-500);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .page-card h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--slate-800);
+    margin-bottom: 8px;
+  }
+  .page-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .page-card ul li {
+    font-size: 0.78rem;
+    color: var(--slate-500);
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .page-card ul li::before {
+    content: '·';
+    color: var(--teal-500);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* YMYL Block */
+  .ymyl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .ymyl-card {
+    background: linear-gradient(135deg, #f0f7ff, #e8f4ff);
+    border: 1px solid var(--blue-200);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .ymyl-card .ymyl-icon { font-size: 1.4rem; margin-bottom: 6px; }
+  .ymyl-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--blue-700); margin-bottom: 4px; }
+  .ymyl-card p { font-size: 0.76rem; color: var(--slate-600); line-height: 1.45; }
+
+  /* Timeline strip */
+  .timeline-strip {
+    display: flex;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    border: 1px solid var(--blue-100);
+  }
+  .tl-segment {
+    flex: 1;
+    padding: 12px 10px;
+    text-align: center;
+    font-size: 0.76rem;
+    font-weight: 500;
+    border-right: 1px solid rgba(255,255,255,0.3);
+    cursor: default;
+  }
+  .tl-segment:last-child { border-right: none; }
+  .tl-segment .tl-days { font-family: var(--font-mono); font-size: 0.7rem; opacity: 0.8; display: block; margin-top: 2px; }
+  .tl-segment.t1 { background: #dbeafe; color: #1e40af; }
+  .tl-segment.t2 { background: #d1fae5; color: #065f46; }
+  .tl-segment.t3 { background: #fef3c7; color: #92400e; }
+  .tl-segment.t4 { background: #ede9fe; color: #5b21b6; }
+  .tl-segment.t5 { background: #fee2e2; color: #991b1b; }
+
+  /* ── PART II: COMPETITOR ANALYSIS ── */
+  .insight-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .insight-pill {
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 12px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 6px rgba(37,99,235,0.05);
+  }
+  .insight-pill .metric {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--blue-700);
+    line-height: 1;
+  }
+  .insight-pill .metric-label {
+    font-size: 0.75rem;
+    color: var(--slate-500);
+    margin-top: 4px;
+    line-height: 1.3;
+  }
+
+  /* Gaps table */
+  .gaps-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.06);
+  }
+  .gaps-table thead { background: var(--blue-700); color: white; }
+  .gaps-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+  .gaps-table tbody tr:nth-child(even) { background: var(--blue-50); }
+  .gaps-table tbody tr:nth-child(odd) { background: white; }
+  .gaps-table tbody tr:hover { background: var(--blue-100); }
+  .gaps-table td { padding: 11px 16px; border-bottom: 1px solid var(--blue-100); vertical-align: top; }
+  .gaps-table td:first-child { font-weight: 500; color: var(--slate-700); }
+
+  .sat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .sat-red { background: #fee2e2; color: #991b1b; }
+  .sat-yellow { background: #fef9c3; color: #854d0e; }
+  .sat-green { background: #dcfce7; color: #166534; }
+
+  .opp-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #2563eb 0%, #0d9488 100%);
+    color: white;
+  }
+
+  /* Competitor cards */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .comp-card {
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(37,99,235,0.04);
+    transition: box-shadow 0.2s;
+  }
+  .comp-card:hover { box-shadow: 0 6px 20px rgba(37,99,235,0.1); }
+  .comp-card .comp-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--blue-700);
+    margin-bottom: 2px;
+  }
+  .comp-card .comp-tagline {
+    font-size: 0.78rem;
+    color: var(--slate-500);
+    font-style: italic;
+    margin-bottom: 10px;
+    min-height: 18px;
+  }
+  .comp-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 5px;
+    align-items: flex-start;
+  }
+  .comp-row .comp-key {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--teal-600);
+    min-width: 90px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding-top: 1px;
+  }
+  .comp-row .comp-val {
+    font-size: 0.8rem;
+    color: var(--slate-600);
+  }
+  .comp-weakness {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #fef2f2;
+    border-left: 3px solid #f87171;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.78rem;
+    color: #7f1d1d;
+  }
+  .comp-weakness strong { font-weight: 600; }
+
+  /* HFW Opportunity section */
+  .hfw-method {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(37,99,235,0.12);
+  }
+  .method-step {
+    padding: 22px 18px;
+    position: relative;
+  }
+  .method-step::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 1rem;
+    z-index: 2;
+  }
+  .method-step:last-child::after { display: none; }
+  .method-step.s1 { background: #1e3a5f; }
+  .method-step.s2 { background: #1a4a6e; }
+  .method-step.s3 { background: #0e7490; }
+  .method-step.s4 { background: #0d9488; }
+  .method-step .step-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .method-step h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .method-step p {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  .positioning-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .pos-card {
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 2px 10px rgba(37,99,235,0.04);
+  }
+  .pos-card .pos-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--teal-600);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .pos-card blockquote {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--slate-800);
+    line-height: 1.5;
+    border-left: 3px solid var(--blue-500);
+    padding-left: 14px;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .pos-card p { font-size: 0.82rem; color: var(--slate-500); }
+
+  /* Channel playbook */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .channel-card {
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .channel-card .ch-icon { font-size: 1.4rem; margin-bottom: 6px; }
+  .channel-card h4 { font-size: 0.88rem; font-weight: 600; color: var(--slate-800); margin-bottom: 8px; }
+  .channel-card .hook {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--blue-700);
+    background: var(--blue-50);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .channel-card p { font-size: 0.78rem; color: var(--slate-500); line-height: 1.45; }
+
+  /* Priorities */
+  .priority-list {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .priority-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .priority-item .pri-num {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--blue-600);
+    min-width: 28px;
+    text-align: center;
+  }
+  .priority-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--slate-800); margin-bottom: 3px; }
+  .priority-item p { font-size: 0.8rem; color: var(--slate-500); }
+
+  /* Footer */
+  footer {
+    background: var(--slate-900);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px 2rem;
+    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+  }
+  footer strong { color: white; }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .hfw-method { grid-template-columns: 1fr 1fr; }
+    .positioning-cards { grid-template-columns: 1fr; }
+    .method-step::after { display: none; }
+    .timeline-strip { flex-direction: column; }
+    .nav-links { display: none; }
+  }
+
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.1s; }
+  .fade-in:nth-child(3) { animation-delay: 0.15s; }
+  .fade-in:nth-child(4) { animation-delay: 0.2s; }
+  .fade-in:nth-child(5) { animation-delay: 0.25s; }
+
+  h3.subsection-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--slate-800);
+    margin-bottom: 14px;
+    margin-top: 32px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--blue-100);
+  }
+
+  .note-box {
+    background: linear-gradient(135deg, #eff6ff, #f0fdfa);
+    border: 1px solid var(--blue-200);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.82rem;
+    color: var(--slate-600);
+    margin-bottom: 24px;
+  }
+  .note-box strong { color: var(--blue-700); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <span class="dot"></span>
+    HFW Longevity — Strategy Doc
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active" onclick="showSection('roadmap',this)">Part I: Web Roadmap</a>
+    <a href="#" onclick="showSection('competitor',this)">Part II: Competitor Intelligence</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Internal Strategy Document · HFWLongevity.com</div>
+  <h1>Web Build & Competitive<br><em>Positioning Intelligence</em></h1>
+  <p>45-day WordPress roadmap + full competitor messaging analysis to launch HFW Longevity's online presence with authority and differentiation.</p>
+</div>
+
+<div class="section-tabs">
+  <button class="tab-btn active" onclick="showSection('roadmap',this)">Part I — WordPress Roadmap</button>
+  <button class="tab-btn" onclick="showSection('competitor',this)">Part II — Competitor Analysis</button>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!--  PART I: ROADMAP                               -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="roadmap" class="section-content active">
+<div class="container">
+
+  <div class="section-header fade-in">
+    <div class="label">Part I of II</div>
+    <h2>WordPress Web Design Roadmap</h2>
+    <p>13 fully designed, conversion-focused pages + dedicated ad landing pages. 45-day sprint with weekly milestones.</p>
+  </div>
+
+  <!-- Timeline strip -->
+  <div class="timeline-strip fade-in">
+    <div class="tl-segment t1">Phase 1<span class="tl-days">Days 1–7</span></div>
+    <div class="tl-segment t2">Phase 2<span class="tl-days">Days 8–18</span></div>
+    <div class="tl-segment t3">Phase 3<span class="tl-days">Days 19–29</span></div>
+    <div class="tl-segment t4">Phase 4<span class="tl-days">Days 30–38</span></div>
+    <div class="tl-segment t5">Phase 5<span class="tl-days">Days 39–45</span></div>
+  </div>
+
+  <!-- YMYL Trust Elements -->
+  <h3 class="subsection-title">YMYL Trust & Credibility Elements</h3>
+  <div class="note-box fade-in">
+    <strong>Why this matters:</strong> As a health and medical website, HFW Longevity falls under Google's YMYL (Your Money or Your Life) category. E-E-A-T signals — Experience, Expertise, Authoritativeness, and Trustworthiness — must be built into every page to rank and convert.
+  </div>
+  <div class="ymyl-grid fade-in">
+    <div class="ymyl-card">
+      <div class="ymyl-icon">🩺</div>
+      <h4>Physician Bio Pages</h4>
+      <p>Full credentials, education, board certifications, headshots, and personal health story for every provider.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">🏛️</div>
+      <h4>Medical Disclaimer & Privacy Policy</h4>
+      <p>HIPAA-aligned privacy policy, telehealth consent, and medical disclaimer on every relevant page.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">📋</div>
+      <h4>Lab & Test Citations</h4>
+      <p>Every diagnostic claim (GI-MAP, DUTCH, TruAge) links to published research or lab company pages.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">⭐</div>
+      <h4>Verified Patient Reviews</h4>
+      <p>Google, Healthgrades, or Zocdoc-verified testimonials with full name and condition treated.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">📰</div>
+      <h4>Press & Media Mentions</h4>
+      <p>Any podcast appearances, publications, or media coverage displayed with logos for authority.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">🔒</div>
+      <h4>SSL + Trust Seals</h4>
+      <p>HTTPS, secure checkout seals, telehealth platform compliance badges (Doxy.me, etc.) visible site-wide.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">🧾</div>
+      <h4>Schema Markup</h4>
+      <p>MedicalBusiness, Physician, FAQPage, and Review schema on all key pages for rich results.</p>
+    </div>
+    <div class="ymyl-card">
+      <div class="ymyl-icon">📚</div>
+      <h4>Research-Backed Content</h4>
+      <p>All health claims reference peer-reviewed studies. Inline citations on service and blog pages.</p>
+    </div>
+  </div>
+
+  <!-- Phase cards -->
+  <h3 class="subsection-title">Phase-by-Phase Build Plan</h3>
+  <div class="phase-grid">
+
+    <!-- Phase 1 -->
+    <div class="phase-card open">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-badge phase1">Phase 1</span>
+        <span class="phase-title">Foundation — Homepage Copy & Figma Design Iterations</span>
+        <span>
+          <span class="phase-days">Days 1–7</span>
+          <span class="phase-chevron">▼</span>
+        </span>
+      </div>
+      <div class="phase-body">
+        <p style="font-size:0.85rem;color:var(--slate-500);margin-bottom:14px;">The homepage sets the entire brand tone. This phase is intentionally front-loaded to nail the positioning before touching any other page.</p>
+        <div class="page-grid">
+          <div class="page-card">
+            <div class="page-num">Page 01</div>
+            <h4>Homepage</h4>
+            <ul>
+              <li>Hero: "Your labs say you're fine. Your biological age says otherwise."</li>
+              <li>Above-fold CTA: Book Free Consultation</li>
+              <li>The HFW Method (Forensic → Blueprint → Activation → Optimization)</li>
+              <li>Named tests: GI-MAP, DUTCH, TruAge, Metabolomix+</li>
+              <li>Telehealth-first trust bar (Nationwide · Doorstep Lab Kits · No Waitlist)</li>
+              <li>Physician credentials + photo strip</li>
+              <li>Social proof: patient outcome stats + review snippets</li>
+              <li>Service category cards linking to inner pages</li>
+              <li>FAQs (with FAQ Schema)</li>
+              <li>Sticky CTA bar on mobile</li>
+            </ul>
+          </div>
+          <div class="page-card" style="background:#f0f7ff;border-color:var(--blue-200);">
+            <div class="page-num" style="color:var(--teal-600);">Figma Process</div>
+            <h4>Design Iterations</h4>
+            <ul>
+              <li>Day 1–2: Wireframes (low-fidelity layout)</li>
+              <li>Day 3–4: High-fidelity design V1 in Figma</li>
+              <li>Day 5: Client review + feedback round</li>
+              <li>Day 6: V2 revisions applied</li>
+              <li>Day 7: Final sign-off + export to developer</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-card open">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-badge phase2">Phase 2</span>
+        <span class="phase-title">Authority Pages — About, Team & Core Services</span>
+        <span>
+          <span class="phase-days">Days 8–18</span>
+          <span class="phase-chevron">▼</span>
+        </span>
+      </div>
+      <div class="phase-body">
+        <p style="font-size:0.85rem;color:var(--slate-500);margin-bottom:14px;">These pages carry the heaviest YMYL weight. Physician credentials and the brand philosophy need to be fully built before service pages go live.</p>
+        <div class="page-grid">
+          <div class="page-card">
+            <div class="page-num">Page 02</div>
+            <h4>About Us / Our Team</h4>
+            <ul>
+              <li>Founder story + brand origin</li>
+              <li>Full physician bios (MD/DO credentials, photo, personal health journey)</li>
+              <li>Mission & philosophy (longevity optimization, not disease fixing)</li>
+              <li>HFW Method overview</li>
+              <li>Board certifications + professional affiliations</li>
+              <li>Media mentions / speaking appearances</li>
+              <li>Telehealth state licensure map (states served)</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 03</div>
+            <h4>Functional Medicine</h4>
+            <ul>
+              <li>Hero: "Conventional medicine treats symptoms. We find the source."</li>
+              <li>What functional medicine is vs. what it isn't</li>
+              <li>How HFW's approach differs from standard FM practices</li>
+              <li>The patient journey step-by-step</li>
+              <li>Conditions commonly addressed</li>
+              <li>CTA: Book Forensic Health Analysis</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 08</div>
+            <h4>Advanced Testing & Diagnostics</h4>
+            <ul>
+              <li>Named tests: GI-MAP, DUTCH Complete, Metabolomix+, TruAge, Food Sensitivity</li>
+              <li>Vs. standard labs: what's missing from a typical blood panel</li>
+              <li>How doorstep lab kits work (telehealth-native)</li>
+              <li>Scientific references for each test</li>
+              <li>Sample report screenshots (redacted)</li>
+              <li>FAQ: "My labs are normal. Why would yours be different?"</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 13</div>
+            <h4>Holistic Doctors</h4>
+            <ul>
+              <li>SEO-targeted: "holistic doctor near me" + telehealth angle</li>
+              <li>What makes a holistic MD different</li>
+              <li>HFW team credentials + care philosophy</li>
+              <li>State availability CTA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-badge phase3">Phase 3</span>
+        <span class="phase-title">Condition-Specific Service Pages</span>
+        <span>
+          <span class="phase-days">Days 19–29</span>
+          <span class="phase-chevron">▼</span>
+        </span>
+      </div>
+      <div class="phase-body">
+        <p style="font-size:0.85rem;color:var(--slate-500);margin-bottom:14px;">Each page targets a specific patient persona and search intent. Copy follows the Problem-Agitation-Solution framework throughout.</p>
+        <div class="page-grid">
+          <div class="page-card">
+            <div class="page-num">Page 04</div>
+            <h4>Weight Loss & Metabolic Health</h4>
+            <ul>
+              <li>Hero: "Not a diet. A metabolic reset."</li>
+              <li>Why calorie counting fails (metabolic dysfunction framing)</li>
+              <li>Metabolomix+ and functional testing for metabolism</li>
+              <li>Peptide therapy for fat loss (GLP-1 context)</li>
+              <li>Patient transformation case study</li>
+              <li>Program timeline + what to expect</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 05</div>
+            <h4>Gut Health</h4>
+            <ul>
+              <li>Hero: "Your GI panel came back normal. You still bloat after every meal."</li>
+              <li>What standard GI panels miss (dysbiosis, leaky gut, pathogens)</li>
+              <li>GI-MAP deep dive: what it tests, what it reveals</li>
+              <li>Gut-brain-longevity axis explainer</li>
+              <li>Conditions addressed: IBS, SIBO, food sensitivities</li>
+              <li>Treatment approach: protocols + nutrition</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 06</div>
+            <h4>Menopause & Hormonal Health</h4>
+            <ul>
+              <li>Hero: "You're not imagining it. Your hormones are changing. Here's the roadmap."</li>
+              <li>DUTCH Complete test: hormone metabolites explained</li>
+              <li>HRT vs. bioidentical vs. peptide-based support</li>
+              <li>Perimenopause, menopause, and post-menopause distinctions</li>
+              <li>Patient journey timeline</li>
+              <li>Safety and evidence section (YMYL-critical)</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 07</div>
+            <h4>Peptide Therapy</h4>
+            <ul>
+              <li>Hero: "The cutting edge of longevity medicine. Now available via telehealth."</li>
+              <li>What peptides are (plain-language explainer)</li>
+              <li>Key peptides offered + their functions</li>
+              <li>Who is a candidate? Self-qualification section</li>
+              <li>Research citations for each peptide</li>
+              <li>FAQs addressing safety and legality</li>
+              <li>Physician-supervised protocol emphasis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-badge phase4">Phase 4</span>
+        <span class="phase-title">Conversion & Trust Infrastructure</span>
+        <span>
+          <span class="phase-days">Days 30–38</span>
+          <span class="phase-chevron">▼</span>
+        </span>
+      </div>
+      <div class="phase-body">
+        <p style="font-size:0.85rem;color:var(--slate-500);margin-bottom:14px;">These pages directly drive lead capture and build the trust layer that converts skeptical YMYL visitors into booked consultations.</p>
+        <div class="page-grid">
+          <div class="page-card">
+            <div class="page-num">Page 09</div>
+            <h4>Book Free Consultation</h4>
+            <ul>
+              <li>Calendly or Acuity embed (telehealth-optimized)</li>
+              <li>What happens in the call (removes anxiety)</li>
+              <li>Short "Is this right for me?" self-qualifier</li>
+              <li>No-pressure language ("no sales pitch")</li>
+              <li>Physician photo + name reinforcing trust</li>
+              <li>Post-submission confirmation + next steps email</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 10</div>
+            <h4>Patient Reviews</h4>
+            <ul>
+              <li>Verified testimonials (Google / Healthgrades embeds)</li>
+              <li>Case studies with before/after lab markers</li>
+              <li>TruAge biological age reversal outcomes</li>
+              <li>Video testimonials (if available)</li>
+              <li>Condition-specific testimonial filters</li>
+              <li>Review schema markup for rich snippets</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 11</div>
+            <h4>FAQs</h4>
+            <ul>
+              <li>"My labs are normal. Why would yours be different?"</li>
+              <li>"Is telehealth functional medicine as effective as in-person?"</li>
+              <li>"Do you accept insurance?"</li>
+              <li>"How do the at-home lab kits work?"</li>
+              <li>"What states do you serve?"</li>
+              <li>FAQPage schema for featured snippets</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Page 12</div>
+            <h4>Contact</h4>
+            <ul>
+              <li>Simple contact form + phone/email</li>
+              <li>Response time expectation set</li>
+              <li>Map (if physical address exists)</li>
+              <li>Social links</li>
+              <li>HIPAA-compliant form note</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase-card">
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-badge phase5">Phase 5</span>
+        <span class="phase-title">Ad Landing Pages, QA & Launch</span>
+        <span>
+          <span class="phase-days">Days 39–45</span>
+          <span class="phase-chevron">▼</span>
+        </span>
+      </div>
+      <div class="phase-body">
+        <p style="font-size:0.85rem;color:var(--slate-500);margin-bottom:14px;">Dedicated landing pages for paid traffic — no nav, single CTA, conversion-optimised. QA sweep and soft launch.</p>
+        <div class="page-grid">
+          <div class="page-card">
+            <div class="page-num">Ad LP 01</div>
+            <h4>Biological Age Testing LP</h4>
+            <ul>
+              <li>Headline: "Find out your real age — not just your birthday."</li>
+              <li>TruAge test explainer + value prop</li>
+              <li>Single CTA: Book Free Consultation</li>
+              <li>No navigation (conversion-only)</li>
+              <li>Social proof strip</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Ad LP 02</div>
+            <h4>"Labs Are Normal" LP</h4>
+            <ul>
+              <li>Headline: "Your doctor said everything's fine. So why do you feel terrible?"</li>
+              <li>PAS copy structure</li>
+              <li>Named tests as the solution</li>
+              <li>Single CTA + trust seals</li>
+            </ul>
+          </div>
+          <div class="page-card">
+            <div class="page-num">Ad LP 03</div>
+            <h4>Menopause LP</h4>
+            <ul>
+              <li>Targeted to perimenopausal search traffic</li>
+              <li>DUTCH test as anchor</li>
+              <li>Fast-read layout: symptoms → root cause → solution</li>
+            </ul>
+          </div>
+          <div class="page-card" style="background:#f0fdf4;border-color:#bbf7d0;">
+            <div class="page-num" style="color:#166534;">QA & Launch</div>
+            <h4>Final Checklist</h4>
+            <ul>
+              <li>Mobile responsiveness audit (all 13 pages)</li>
+              <li>Page speed test (Core Web Vitals)</li>
+              <li>Schema markup validation (Google Rich Results Test)</li>
+              <li>All CTAs and forms tested</li>
+              <li>Disclaimer and privacy policy live</li>
+              <li>GA4 + GSC setup and verified</li>
+              <li>Soft launch → index request submitted</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end phase-grid -->
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!--  PART II: COMPETITOR ANALYSIS                  -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="competitor" class="section-content">
+<div class="container">
+
+  <div class="section-header fade-in">
+    <div class="label">Part II of II</div>
+    <h2>Competitor Messaging & Positioning Analysis</h2>
+    <p>9 competitors benchmarked. Key messaging gaps identified. HFW's white space mapped for immediate exploitation.</p>
+  </div>
+
+  <!-- Key stats -->
+  <div class="insight-bar fade-in">
+    <div class="insight-pill">
+      <div class="metric">9</div>
+      <div class="metric-label">Competitors analysed</div>
+    </div>
+    <div class="insight-pill">
+      <div class="metric">8/9</div>
+      <div class="metric-label">In-person only — telehealth is rare</div>
+    </div>
+    <div class="insight-pill">
+      <div class="metric">0/9</div>
+      <div class="metric-label">Name TruAge or lead with biological age</div>
+    </div>
+    <div class="insight-pill">
+      <div class="metric">0/9</div>
+      <div class="metric-label">Feature peptide therapy prominently</div>
+    </div>
+    <div class="insight-pill">
+      <div class="metric">0/9</div>
+      <div class="metric-label">Use "labs say you're fine" narrative</div>
+    </div>
+  </div>
+
+  <!-- Messaging gap table -->
+  <h3 class="subsection-title">Messaging Saturation & Gap Map</h3>
+  <table class="gaps-table fade-in">
+    <thead>
+      <tr>
+        <th>Theme / Message</th>
+        <th>Market Saturation</th>
+        <th>HFW Opportunity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"Root Cause Medicine"</td>
+        <td><span class="sat-badge sat-red">🔴 Oversaturated</span></td>
+        <td>Must evolve the language — go more specific and provocative</td>
+      </tr>
+      <tr>
+        <td>"Whole Person / Mind-Body-Spirit"</td>
+        <td><span class="sat-badge sat-red">🔴 Oversaturated</span></td>
+        <td>Table stakes. Do not lead with this</td>
+      </tr>
+      <tr>
+        <td>"Integrative / Holistic"</td>
+        <td><span class="sat-badge sat-red">🔴 Category standard</span></td>
+        <td>Only use if you specify what it means operationally</td>
+      </tr>
+      <tr>
+        <td>"Personalized Care"</td>
+        <td><span class="sat-badge sat-yellow">🟡 Common</span></td>
+        <td><span class="opp-tag">Own via data specificity</span> — name the actual tests</td>
+      </tr>
+      <tr>
+        <td>Advanced / Functional Testing</td>
+        <td><span class="sat-badge sat-yellow">🟡 Vague mentions only</span></td>
+        <td><span class="opp-tag">Major gap</span> — Name GI-MAP, DUTCH, TruAge in headlines</td>
+      </tr>
+      <tr>
+        <td>Telehealth / Nationwide Delivery</td>
+        <td><span class="sat-badge sat-green">🟢 Rare — 1 of 9</span></td>
+        <td><span class="opp-tag">HFW's #1 differentiator</span> — lead everywhere</td>
+      </tr>
+      <tr>
+        <td>Longevity Optimization Focus</td>
+        <td><span class="sat-badge sat-green">🟢 Rare</span></td>
+        <td><span class="opp-tag">Own this category</span> — no one uses the word "longevity" prominently</td>
+      </tr>
+      <tr>
+        <td>"Your Labs Say You're Fine" Narrative</td>
+        <td><span class="sat-badge sat-green">🟢 Unclaimed</span></td>
+        <td><span class="opp-tag">HFW's sharpest blade</span> — use as homepage hero</td>
+      </tr>
+      <tr>
+        <td>Biological Age / TruAge Testing</td>
+        <td><span class="sat-badge sat-green">🟢 Zero competitors</span></td>
+        <td><span class="opp-tag">First-mover advantage</span> — own "biological age reversal"</td>
+      </tr>
+      <tr>
+        <td>Peptide Therapy</td>
+        <td><span class="sat-badge sat-green">🟢 Not mentioned anywhere</span></td>
+        <td><span class="opp-tag">Category creator opportunity</span> — attracts biohacker/longevity segment</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Competitor breakdown -->
+  <h3 class="subsection-title">Individual Competitor Breakdown</h3>
+  <div class="comp-grid fade-in">
+
+    <div class="comp-card">
+      <div class="comp-name">Vytal Health</div>
+      <div class="comp-tagline">Closest competitor to HFW</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Telehealth-native functional medicine — most similar to HFW's model</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">Telehealth (nationwide) — their key advantage</span></div>
+      <div class="comp-row"><span class="comp-key">Testing</span><span class="comp-val">Advanced testing mentioned but not named specifically</span></div>
+      <div class="comp-row"><span class="comp-key">Pricing Model</span><span class="comp-val">Membership-based — accessible positioning</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Vytal competes on accessibility and membership. HFW should go premium + specialized — compete on specificity of testing and longevity focus, not price.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Revive Integrative Health</div>
+      <div class="comp-tagline">"The body has an innate ability to heal itself."</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Root cause medicine for chronic and autoimmune conditions</span></div>
+      <div class="comp-row"><span class="comp-key">Credentials</span><span class="comp-val">Dual doctorate team (ND, DC) + MS, RD nutritionist</span></div>
+      <div class="comp-row"><span class="comp-key">Team as USP</span><span class="comp-val">Strong — both NDs have personal health struggle stories</span></div>
+      <div class="comp-row"><span class="comp-key">Testing</span><span class="comp-val">"State-of-the-art" tools mentioned, no tests named</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">Primarily in-person (Michigan/Illinois)</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Generic testing language. No named diagnostics. Telehealth-locked to a region. HFW goes national and names every test.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Integra Med</div>
+      <div class="comp-tagline">"Personalized Integrative Care for Optimal Wellness"</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Multidisciplinary in-person clinic combining conventional + natural therapies</span></div>
+      <div class="comp-row"><span class="comp-key">Key Tool</span><span class="comp-val">Functional Medical Thermography — their only named diagnostic</span></div>
+      <div class="comp-row"><span class="comp-key">Team</span><span class="comp-val">Not emphasized — generic team mention only</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person, Elmhurst IL only</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Weak team branding, single diagnostic tool, location-locked. Zero longevity or optimization language.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Well Integrative Medicine</div>
+      <div class="comp-tagline">"Our practice is patient-centered, not disease-centered."</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Structured 6 & 9-month wellness programs; also offers aesthetic treatments</span></div>
+      <div class="comp-row"><span class="comp-key">Credentials</span><span class="comp-val">Founder Amy Weiler is board-certified DO — strong MD/DO trust signal</span></div>
+      <div class="comp-row"><span class="comp-key">Testing</span><span class="comp-val">No specific tests named on homepage or service pages</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person, Chicago IL only</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Telehealth is their one nod to accessibility, yet they remain location-locked. Their testing approach is completely invisible. HFW out-specifics them on diagnostics.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">WholeHealth Chicago</div>
+      <div class="comp-tagline">"A Place of Healing, Calm, and Wellness."</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">"Midwest's oldest and most respected" integrative center — legacy play</span></div>
+      <div class="comp-row"><span class="comp-key">Credentials</span><span class="comp-val">Dr. Edelberg (MD) — nationally recognized pioneer; strong authority brand</span></div>
+      <div class="comp-row"><span class="comp-key">Testing</span><span class="comp-val">No specific tests listed anywhere. Broad "toolbox" language only</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person, Chicago only. No telehealth.</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Legacy brand in a single city. Warm but passive copywriting ("calm and wellness"). Zero urgency, zero advanced diagnostics named. HFW's precision-testing narrative obliterates this.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Premier Integrative Health KC</div>
+      <div class="comp-tagline">"Find The Cause, Live The Cure."</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Tiered outcome-driven programs: Signature, Metabolic Reset, Pathways</span></div>
+      <div class="comp-row"><span class="comp-key">Support</span><span class="comp-val">"Next Level Support" — frequent team contact is a USP for them</span></div>
+      <div class="comp-row"><span class="comp-key">Testing</span><span class="comp-val">No specific tests listed. Focus is on programs, not diagnostics</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person, Kansas City MO only</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Good tagline but doesn't name the specific frustration (normal labs). No telehealth. No longevity angle. HFW's "Ongoing Monitoring as a Service" directly competes with and beats their support model — nationwide.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Mosaic Medical</div>
+      <div class="comp-tagline">—</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Community health center model — broad primary care</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person, regional</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Not a direct competitor in functional medicine or longevity space. Minimal messaging overlap.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">CIFHW</div>
+      <div class="comp-tagline">—</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Integrative and functional health, clinic-based</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person. No telehealth.</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Location-locked, no differentiated testing language, no longevity positioning.</div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-name">Advanced Integrated Health</div>
+      <div class="comp-tagline">—</div>
+      <div class="comp-row"><span class="comp-key">Positioning</span><span class="comp-val">Credentials-forward. Multi-modality clinic.</span></div>
+      <div class="comp-row"><span class="comp-key">Delivery</span><span class="comp-val">In-person. No telehealth.</span></div>
+      <div class="comp-weakness"><strong>Gap for HFW:</strong> Credentials are a passive trust signal, not a differentiator. No sharp messaging or testing specificity.</div>
+    </div>
+
+  </div>
+
+  <!-- HFW Method -->
+  <h3 class="subsection-title">The HFW Method — Proprietary Framework</h3>
+  <p style="font-size:0.85rem;color:var(--slate-500);margin-bottom:16px;">No competitor has a named methodology. This framework becomes HFW's intellectual property and the structural spine of all website copy.</p>
+  <div class="hfw-method fade-in">
+    <div class="method-step s1">
+      <div class="step-num">STEP 01</div>
+      <h4>Forensic</h4>
+      <p>TruAge + GI-MAP + DUTCH Complete + Metabolomix+ + Food Sensitivity. Tests that reveal what standard labs miss.</p>
+    </div>
+    <div class="method-step s2">
+      <div class="step-num">STEP 02</div>
+      <h4>Blueprint</h4>
+      <p>Personalized protocol built from your results: peptides, HRT, targeted supplementation, and nutrition architecture.</p>
+    </div>
+    <div class="method-step s3">
+      <div class="step-num">STEP 03</div>
+      <h4>Activation</h4>
+      <p>1:1 physician coaching + telehealth implementation. Your plan delivered, explained, and adjusted in real time.</p>
+    </div>
+    <div class="method-step s4">
+      <div class="step-num">STEP 04</div>
+      <h4>Optimization</h4>
+      <p>Ongoing biological age tracking and monitoring. Health as a continuous practice — not a one-time fix.</p>
+    </div>
+  </div>
+
+  <!-- Positioning versions -->
+  <h3 class="subsection-title">Recommended Positioning Narratives</h3>
+  <div class="positioning-cards fade-in">
+    <div class="pos-card">
+      <div class="pos-label">Version 1 — The Lab Frustration Angle</div>
+      <blockquote>"Your labs say you're fine. Your biological age says otherwise."</blockquote>
+      <p>HFW Longevity is the physician-led, telehealth-native functional medicine practice for patients who refuse to accept 'normal' as good enough. We combine forensic-grade diagnostics — GI-MAP, DUTCH Complete, Metabolomix+, and TruAge Biological Age testing — with research-backed peptide therapies and precision hormone optimization, delivered entirely via telehealth nationwide.</p>
+    </div>
+    <div class="pos-card">
+      <div class="pos-label">Version 2 — The Biological Age Reversal Angle</div>
+      <blockquote>"We don't wait for disease to strike. We measure how fast you're aging — then reverse it."</blockquote>
+      <p>HFW Longevity is a physician-led telehealth practice specializing in reversing biological age through forensic diagnostics and peptide-based interventions. We measure your cellular aging with TruAge, optimize your gut-brain-longevity axis, and deploy research-backed peptides to slow — then reverse — your biological clock. Telehealth. Forensic. Anti-aging medicine that actually works.</p>
+    </div>
+  </div>
+
+  <!-- Channel playbook -->
+  <h3 class="subsection-title">Channel-by-Channel Messaging Playbook</h3>
+  <div class="channel-grid fade-in">
+    <div class="channel-card">
+      <div class="ch-icon">🌐</div>
+      <h4>Homepage Hero</h4>
+      <div class="hook">"Your labs say you're fine. You know you're not."</div>
+      <p>Sub-header: "We run the tests your doctor didn't. Nationwide, via telehealth." CTA: Get the Right Tests →</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🫁</div>
+      <h4>Gut Health Page</h4>
+      <div class="hook">"Your GI panel came back normal. But you still bloat after every meal."</div>
+      <p>Because standard labs don't test for gut dysbiosis, leaky gut markers, or hidden pathogens. Our GI-MAP does.</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">📧</div>
+      <h4>Email Nurture Subject</h4>
+      <div class="hook">"Your labs are normal. So why do you feel terrible?"</div>
+      <p>"Normal is just another word for we didn't look hard enough." Opens the door to the HFW difference.</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">📱</div>
+      <h4>Instagram / Facebook Carousel</h4>
+      <div class="hook">Slide 1: "Your blood work is normal."</div>
+      <p>Slide 2: But you feel exhausted, foggy, and inflamed. Slide 3: Here's what your doctor isn't testing for. Slide 4: HFW. We test what others ignore.</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">🔍</div>
+      <h4>SEO / Blog Targets</h4>
+      <div class="hook">"my labs are normal but I feel sick"</div>
+      <p>Other targets: "why do I feel terrible when blood work is fine" · "functional medicine tests doctors don't order" · "biological age testing telehealth"</p>
+    </div>
+    <div class="channel-card">
+      <div class="ch-icon">❓</div>
+      <h4>FAQ (Trust Building)</h4>
+      <div class="hook">"My doctor said all my labs are normal. Why would yours be different?"</div>
+      <p>Standard labs measure a narrow range. They miss gut infections, adrenal patterns, cellular nutrition, and epigenetic aging. That's why patients come to us after years of being told "it's all in your head."</p>
+    </div>
+  </div>
+
+  <!-- Priorities -->
+  <h3 class="subsection-title">Pre-Launch Strategic Priorities</h3>
+  <div class="priority-list fade-in">
+    <div class="priority-item">
+      <span class="pri-num">01</span>
+      <div>
+        <h4>Differentiate from Vytal Health</h4>
+        <p>They're the closest competitor. Avoid "accessible" positioning — go premium + specialized. Compete on specificity of testing and longevity optimization, not price or membership volume.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="pri-num">02</span>
+      <div>
+        <h4>Leverage the TruAge Gap — Own Biological Age Reversal</h4>
+        <p>Zero competitors mention TruAge or position biological age testing as central to their protocol. This is HFW's category-creation opportunity. Make it visual and narrative-central across all pages.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="pri-num">03</span>
+      <div>
+        <h4>Name the HFW Method in Every Touchpoint</h4>
+        <p>Forensic → Blueprint → Activation → Optimization. Give the methodology a name, visual, and page. It becomes intellectual property that no competitor can claim after you publish it first.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="pri-num">04</span>
+      <div>
+        <h4>Peptide Therapy First-Mover Advantage</h4>
+        <p>Be the first in this competitive set to prominently feature peptide therapy with research citations. This positions HFW at the cutting edge and naturally attracts the biohacker and longevity-optimization demographic.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="pri-num">05</span>
+      <div>
+        <h4>Name Every Test — With Context</h4>
+        <p>GI-MAP, DUTCH Complete, Metabolomix+, TruAge, Food Sensitivity. Competitors mention "advanced testing" vaguely. HFW names each test in headlines and explains what it reveals that conventional labs miss. This builds instant authority.</p>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="pri-num">06</span>
+      <div>
+        <h4>Make "Ongoing Monitoring" a Core Product Feature</h4>
+        <p>No competitor makes follow-up care a central offering. HFW's Optimization phase — ongoing biological age tracking — should be positioned as a service, not an afterthought. This becomes a retention and upsell engine.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  <strong>HFW Longevity — Internal Web Strategy Document</strong> · Prepared for client web build · Confidential
+</footer>
+
+<script>
+  function showSection(id, btn) {
+    // Hide all sections
+    document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    // Update tab buttons
+    document.querySelectorAll('.tab-btn, .nav-links a').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    // Re-trigger fade-in
+    document.querySelectorAll('#' + id + ' .fade-in').forEach((el, i) => {
+      el.style.animation = 'none';
+      el.offsetHeight; // force reflow
+      el.style.animation = '';
+      el.style.animationDelay = (i * 0.06) + 's';
+    });
+  }
+
+  function togglePhase(headerEl) {
+    const card = headerEl.closest('.phase-card');
+    card.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
