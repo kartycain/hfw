@@ -692,6 +692,515 @@
     margin-bottom: 24px;
   }
   .note-box strong { color: var(--blue-700); }
+  /* ── PART III: SITE NAV PREVIEW ── */
+
+  /* Simulated browser chrome */
+  .browser-chrome {
+    background: #e8edf2;
+    border-radius: 14px 14px 0 0;
+    padding: 10px 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #cdd5df;
+    border-bottom: none;
+  }
+  .browser-dots { display: flex; gap: 5px; }
+  .browser-dots span {
+    width: 11px; height: 11px; border-radius: 50%;
+  }
+  .browser-dots span:nth-child(1) { background: #ff5f57; }
+  .browser-dots span:nth-child(2) { background: #febc2e; }
+  .browser-dots span:nth-child(3) { background: #28c840; }
+  .browser-url {
+    flex: 1;
+    background: white;
+    border: 1px solid #cdd5df;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-family: var(--font-mono);
+    font-size: 0.73rem;
+    color: var(--slate-500);
+    margin: 0 8px;
+  }
+  .browser-url span { color: var(--blue-600); }
+
+  /* ─ Simulated site wrapper ─ */
+  .site-preview {
+    border: 1px solid #cdd5df;
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(30,58,95,0.12);
+    margin-bottom: 40px;
+  }
+
+  /* ─ Simulated site header ─ */
+  .sim-header {
+    background: white;
+    border-bottom: 1px solid #e8edf5;
+    box-shadow: 0 2px 8px rgba(30,58,95,0.06);
+  }
+  .sim-header-top {
+    background: linear-gradient(90deg, #1e3a5f 0%, #0e7490 100%);
+    padding: 7px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sim-header-top .trust-strip {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .sim-header-top .trust-strip span {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .sim-header-top .trust-strip span::before {
+    content: '✓';
+    color: var(--teal-400);
+    font-weight: 700;
+  }
+  .sim-header-top .cta-mini {
+    font-size: 0.7rem;
+    background: var(--teal-500);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .sim-header-main {
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sim-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sim-logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, #1e3a5f, #0e7490);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+  }
+  .sim-logo-text .logo-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .sim-logo-text .logo-sub {
+    font-size: 0.62rem;
+    color: var(--teal-600);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .sim-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sim-phone {
+    font-size: 0.8rem;
+    color: var(--slate-600);
+    font-weight: 500;
+  }
+  .sim-phone strong { color: var(--blue-700); font-family: var(--font-mono); }
+  .sim-cta-btn {
+    background: linear-gradient(135deg, #2563eb, #0d9488);
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 22px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: 0 3px 12px rgba(37,99,235,0.3);
+    font-family: var(--font-body);
+  }
+
+  /* ─ Primary nav bar ─ */
+  .sim-nav-bar {
+    background: #f8fbff;
+    border-top: 1px solid #e8edf5;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .sim-nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .sim-nav-link {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--slate-700);
+    padding: 13px 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s;
+    border-bottom: 2px solid transparent;
+    user-select: none;
+  }
+  .sim-nav-link:hover { color: var(--blue-600); border-bottom-color: var(--blue-400); }
+  .sim-nav-link.has-dropdown::after { content: ' ▾'; font-size: 0.65rem; color: var(--slate-400); }
+  .sim-nav-link.active-page { color: var(--blue-700); border-bottom-color: var(--blue-600); font-weight: 600; }
+
+  /* Dropdown */
+  .sim-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 24px rgba(30,58,95,0.12);
+    z-index: 200;
+    padding: 6px 0;
+  }
+  .sim-nav-item:hover .sim-dropdown { display: block; }
+  .sim-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    font-size: 0.78rem;
+    color: var(--slate-700);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.12s;
+  }
+  .sim-dropdown a:hover { background: var(--blue-50); color: var(--blue-700); }
+  .sim-dropdown a .dd-icon { font-size: 0.9rem; width: 18px; text-align: center; }
+  .sim-dropdown .dd-divider {
+    height: 1px;
+    background: var(--blue-50);
+    margin: 4px 0;
+  }
+
+  /* ─ Mobile nav toggle ─ */
+  .sim-mobile-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--slate-200);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--slate-600);
+  }
+
+  /* ─ Page content preview area ─ */
+  .sim-page-area {
+    background: var(--blue-50);
+    min-height: 320px;
+  }
+
+  /* ─ Page switcher pills ─ */
+  .page-switcher {
+    background: white;
+    border-bottom: 1px solid var(--blue-100);
+    padding: 10px 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .page-switcher .ps-label {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: var(--slate-400);
+    letter-spacing: 0.08em;
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .page-pill {
+    font-size: 0.72rem;
+    padding: 4px 11px;
+    border-radius: 12px;
+    border: 1px solid var(--blue-200);
+    background: white;
+    color: var(--slate-600);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--font-body);
+    white-space: nowrap;
+  }
+  .page-pill:hover { border-color: var(--blue-500); color: var(--blue-600); }
+  .page-pill.active { background: var(--blue-600); color: white; border-color: var(--blue-600); }
+
+  /* Page preview panels */
+  .page-panel { display: none; }
+  .page-panel.active { display: block; }
+
+  /* Hero variants */
+  .pp-hero {
+    padding: 40px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pp-hero.h-dark {
+    background: linear-gradient(135deg, #1e3a5f 0%, #0e7490 100%);
+    color: white;
+  }
+  .pp-hero.h-light {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f8f5 100%);
+  }
+  .pp-hero .pp-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .pp-hero.h-dark .pp-eyebrow { color: var(--teal-400); }
+  .pp-hero.h-light .pp-eyebrow { color: var(--teal-600); }
+  .pp-hero h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .pp-hero.h-dark h2 { color: white; }
+  .pp-hero.h-light h2 { color: var(--slate-900); }
+  .pp-hero p {
+    font-size: 0.88rem;
+    max-width: 560px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .pp-hero.h-dark p { color: rgba(255,255,255,0.75); }
+  .pp-hero.h-light p { color: var(--slate-600); }
+  .pp-cta {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 22px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+  }
+  .pp-cta.primary {
+    background: linear-gradient(135deg, #2563eb, #0d9488);
+    color: white;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+    border: none;
+  }
+  .pp-cta.secondary {
+    background: white;
+    color: var(--blue-700);
+    border: 1.5px solid var(--blue-300);
+  }
+  .pp-cta.teal {
+    background: var(--teal-500);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(13,148,136,0.3);
+  }
+
+  .pp-body {
+    padding: 20px 32px 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+  .pp-card {
+    background: white;
+    border: 1px solid var(--blue-100);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .pp-card .pp-icon { font-size: 1.3rem; margin-bottom: 6px; }
+  .pp-card h4 { font-size: 0.82rem; font-weight: 600; color: var(--slate-800); margin-bottom: 4px; }
+  .pp-card p { font-size: 0.74rem; color: var(--slate-500); line-height: 1.4; }
+
+  .pp-trust {
+    padding: 14px 32px;
+    background: white;
+    border-top: 1px solid var(--blue-100);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .pp-trust .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--slate-500);
+    font-weight: 500;
+  }
+  .pp-trust .trust-item span { color: var(--teal-600); font-size: 0.9rem; }
+
+  /* ─ Simulated Footer ─ */
+  .sim-footer {
+    background: var(--slate-900);
+    color: rgba(255,255,255,0.65);
+  }
+  .sim-footer-top {
+    padding: 36px 32px 28px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 28px;
+  }
+  .sim-footer-brand .footer-logo-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .sim-footer-brand .footer-logo-sub {
+    font-size: 0.65rem;
+    color: var(--teal-400);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .sim-footer-brand p {
+    font-size: 0.78rem;
+    line-height: 1.55;
+    max-width: 240px;
+    margin-bottom: 14px;
+  }
+  .footer-socials { display: flex; gap: 8px; }
+  .footer-social-btn {
+    width: 30px; height: 30px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .footer-social-btn:hover { background: var(--teal-600); }
+
+  .sim-footer-col h5 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .sim-footer-col a {
+    display: block;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    margin-bottom: 7px;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .sim-footer-col a:hover { color: var(--teal-400); }
+
+  .sim-footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sim-footer-bottom .copy {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    font-family: var(--font-mono);
+  }
+  .sim-footer-bottom .footer-legal {
+    display: flex;
+    gap: 16px;
+  }
+  .sim-footer-bottom .footer-legal a {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .sim-footer-bottom .footer-legal a:hover { color: var(--teal-400); }
+
+  /* Annotations */
+  .annotation-layer {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 0 0 20px;
+    font-size: 0.8rem;
+    color: #78350f;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .annotation-layer .ann-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+  .nav-structure-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(37,99,235,0.06);
+    margin-bottom: 28px;
+  }
+  .nav-structure-table thead { background: var(--blue-700); color: white; }
+  .nav-structure-table thead th { padding: 11px 16px; text-align: left; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; }
+  .nav-structure-table tbody tr:nth-child(even) { background: var(--blue-50); }
+  .nav-structure-table tbody tr:nth-child(odd) { background: white; }
+  .nav-structure-table td { padding: 10px 16px; border-bottom: 1px solid var(--blue-100); vertical-align: top; }
+  .nav-structure-table td:first-child { font-weight: 600; color: var(--blue-700); font-family: var(--font-mono); font-size: 0.75rem; }
+
+  .nav-group-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .ngb-services { background: #dbeafe; color: #1e40af; }
+  .ngb-company { background: #d1fae5; color: #065f46; }
+  .ngb-conversion { background: #fef3c7; color: #92400e; }
+  .ngb-resources { background: #ede9fe; color: #5b21b6; }
+  .ngb-utility { background: #f1f5f9; color: var(--slate-600); }
+
+  @media (max-width: 700px) {
+    .sim-footer-top { grid-template-columns: 1fr 1fr; }
+    .sim-header-top .trust-strip { display: none; }
+    .sim-nav-bar { overflow-x: auto; }
+    .page-switcher { overflow-x: auto; flex-wrap: nowrap; }
+  }
 </style>
 </head>
 <body>
@@ -704,6 +1213,7 @@
   <div class="nav-links">
     <a href="#" class="active" onclick="showSection('roadmap',this)">Part I: Web Roadmap</a>
     <a href="#" onclick="showSection('competitor',this)">Part II: Competitor Intelligence</a>
+    <a href="#" onclick="showSection('sitenav',this)">Part III: Site Navigation</a>
   </div>
 </nav>
 
@@ -716,6 +1226,7 @@
 <div class="section-tabs">
   <button class="tab-btn active" onclick="showSection('roadmap',this)">Part I — WordPress Roadmap</button>
   <button class="tab-btn" onclick="showSection('competitor',this)">Part II — Competitor Analysis</button>
+  <button class="tab-btn" onclick="showSection('sitenav',this)">Part III — Site Navigation Preview</button>
 </div>
 
 <!-- ══════════════════════════════════════════════ -->
@@ -1416,30 +1927,647 @@
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════════ -->
+<!--  PART III: SITE NAVIGATION PREVIEW             -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="sitenav" class="section-content">
+<div class="container">
+
+  <div class="section-header fade-in">
+    <div class="label">Part III of III</div>
+    <h2>Site Navigation & Structure Preview</h2>
+    <p>Interactive header + footer mockup showing how HFW Longevity's 14 pages sit in the navigation hierarchy. Click any page pill to preview its hero content area.</p>
+  </div>
+
+  <!-- Nav structure table -->
+  <h3 class="subsection-title">Navigation Architecture at a Glance</h3>
+  <div class="annotation-layer fade-in">
+    <span class="ann-icon">💡</span>
+    <div>The primary nav groups pages into logical dropdowns. This keeps the top bar clean (5–6 visible items) while all 14 pages remain one click away. The sticky "Book Free Consultation" CTA is always visible regardless of where a user scrolls.</div>
+  </div>
+  <table class="nav-structure-table fade-in">
+    <thead>
+      <tr><th>#</th><th>Page</th><th>Nav Group</th><th>Nav Position</th><th>Primary CTA</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>01</td>
+        <td>Home</td>
+        <td><span class="nav-group-badge ngb-utility">Top Level</span></td>
+        <td>Logo click / Home link</td>
+        <td>Book Free Consultation</td>
+      </tr>
+      <tr>
+        <td>02</td>
+        <td>About Us / Our Team</td>
+        <td><span class="nav-group-badge ngb-company">About</span></td>
+        <td>About dropdown → Our Story & Team</td>
+        <td>Meet the Physicians</td>
+      </tr>
+      <tr>
+        <td>03</td>
+        <td>Functional Medicine</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Functional Medicine</td>
+        <td>Start Your Assessment</td>
+      </tr>
+      <tr>
+        <td>04</td>
+        <td>Weight Loss & Metabolic Health</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Weight & Metabolism</td>
+        <td>Book Metabolic Analysis</td>
+      </tr>
+      <tr>
+        <td>05</td>
+        <td>Gut Health</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Gut Health</td>
+        <td>Get GI-MAP Tested</td>
+      </tr>
+      <tr>
+        <td>06</td>
+        <td>Menopause & Hormonal Health</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Hormonal Health</td>
+        <td>Book Hormone Consultation</td>
+      </tr>
+      <tr>
+        <td>07</td>
+        <td>Peptide Therapy</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Peptide Therapy</td>
+        <td>Am I a Candidate?</td>
+      </tr>
+      <tr>
+        <td>08</td>
+        <td>Advanced Testing & Diagnostics</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Advanced Testing</td>
+        <td>See Our Test Menu</td>
+      </tr>
+      <tr>
+        <td>09</td>
+        <td>Supplements</td>
+        <td><span class="nav-group-badge ngb-services">Services</span></td>
+        <td>Services dropdown → Supplements</td>
+        <td>Shop Protocols</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Holistic Doctors</td>
+        <td><span class="nav-group-badge ngb-resources">Resources</span></td>
+        <td>Resources dropdown → Holistic Doctors</td>
+        <td>Find Your Doctor</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Patient Reviews</td>
+        <td><span class="nav-group-badge ngb-company">About</span></td>
+        <td>About dropdown → Patient Reviews</td>
+        <td>Read Full Stories</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>FAQs</td>
+        <td><span class="nav-group-badge ngb-resources">Resources</span></td>
+        <td>Resources dropdown → FAQs</td>
+        <td>Still have questions? Book a call</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Book Free Consultation</td>
+        <td><span class="nav-group-badge ngb-conversion">Conversion</span></td>
+        <td>Sticky header CTA button (always visible)</td>
+        <td>— (it IS the CTA)</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Contact</td>
+        <td><span class="nav-group-badge ngb-utility">Utility</span></td>
+        <td>Footer + Resources dropdown</td>
+        <td>Send Message</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Browser + site preview -->
+  <h3 class="subsection-title">Interactive Site Preview</h3>
+  <div class="annotation-layer fade-in">
+    <span class="ann-icon">🖱️</span>
+    <div>Hover over nav items to see dropdowns. Click the page pills below the header to preview each page's hero section and trust bar. The footer is fully interactive.</div>
+  </div>
+
+  <!-- Browser chrome -->
+  <div class="browser-chrome fade-in">
+    <div class="browser-dots">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="browser-url">🔒 <span>hfwlongevity.com</span></div>
+  </div>
+
+  <div class="site-preview fade-in">
+
+    <!-- ── Simulated Header ── -->
+    <div class="sim-header">
+      <!-- Top bar -->
+      <div class="sim-header-top">
+        <div class="trust-strip">
+          <span>Physician-Led</span>
+          <span>100% Telehealth</span>
+          <span>Nationwide</span>
+          <span>Doorstep Lab Kits</span>
+        </div>
+        <div class="sim-cta-mini">📞 (888) 123-4567</div>
+      </div>
+
+      <!-- Logo + CTA row -->
+      <div class="sim-header-main">
+        <div class="sim-logo">
+          <div class="sim-logo-icon">⚕</div>
+          <div class="sim-logo-text">
+            <div class="logo-name">HFW Longevity</div>
+            <div class="logo-sub">Heal From Within</div>
+          </div>
+        </div>
+        <div class="sim-header-actions">
+          <div class="sim-phone">Questions? <strong>(888) 123-4567</strong></div>
+          <button class="sim-cta-btn">Book Free Consultation →</button>
+        </div>
+      </div>
+
+      <!-- Primary nav -->
+      <nav class="sim-nav-bar">
+
+        <div class="sim-nav-item">
+          <div class="sim-nav-link active-page" onclick="switchPage('home')">Home</div>
+        </div>
+
+        <div class="sim-nav-item">
+          <div class="sim-nav-link has-dropdown">Services</div>
+          <div class="sim-dropdown">
+            <a onclick="switchPage('funcmed')"><span class="dd-icon">🔬</span> Functional Medicine</a>
+            <a onclick="switchPage('weightloss')"><span class="dd-icon">⚖️</span> Weight Loss & Metabolic Health</a>
+            <a onclick="switchPage('guthealth')"><span class="dd-icon">🫁</span> Gut Health</a>
+            <a onclick="switchPage('menopause')"><span class="dd-icon">🌡️</span> Menopause & Hormonal Health</a>
+            <a onclick="switchPage('peptide')"><span class="dd-icon">💉</span> Peptide Therapy</a>
+            <a onclick="switchPage('testing')"><span class="dd-icon">🧪</span> Advanced Testing & Diagnostics</a>
+            <div class="dd-divider"></div>
+            <a onclick="switchPage('supplements')"><span class="dd-icon">💊</span> Supplements</a>
+          </div>
+        </div>
+
+        <div class="sim-nav-item">
+          <div class="sim-nav-link has-dropdown">About</div>
+          <div class="sim-dropdown">
+            <a onclick="switchPage('about')"><span class="dd-icon">👨‍⚕️</span> About Us / Our Team</a>
+            <a onclick="switchPage('reviews')"><span class="dd-icon">⭐</span> Patient Reviews</a>
+          </div>
+        </div>
+
+        <div class="sim-nav-item">
+          <div class="sim-nav-link has-dropdown">Resources</div>
+          <div class="sim-dropdown">
+            <a onclick="switchPage('holistic')"><span class="dd-icon">🌿</span> Holistic Doctors</a>
+            <a onclick="switchPage('faqs')"><span class="dd-icon">❓</span> FAQs</a>
+            <a onclick="switchPage('contact')"><span class="dd-icon">📬</span> Contact</a>
+          </div>
+        </div>
+
+        <div class="sim-nav-item">
+          <div class="sim-nav-link" onclick="switchPage('book')" style="color:var(--blue-700);font-weight:600;">Book Free Consult</div>
+        </div>
+
+      </nav>
+    </div>
+    <!-- end sim-header -->
+
+    <!-- Page switcher pills -->
+    <div class="page-switcher">
+      <span class="ps-label">PREVIEW PAGE →</span>
+      <span class="page-pill active" onclick="switchPage('home',this)">Home</span>
+      <span class="page-pill" onclick="switchPage('about',this)">About / Team</span>
+      <span class="page-pill" onclick="switchPage('funcmed',this)">Functional Med</span>
+      <span class="page-pill" onclick="switchPage('weightloss',this)">Weight Loss</span>
+      <span class="page-pill" onclick="switchPage('guthealth',this)">Gut Health</span>
+      <span class="page-pill" onclick="switchPage('menopause',this)">Menopause</span>
+      <span class="page-pill" onclick="switchPage('peptide',this)">Peptide Therapy</span>
+      <span class="page-pill" onclick="switchPage('testing',this)">Advanced Testing</span>
+      <span class="page-pill" onclick="switchPage('supplements',this)">Supplements</span>
+      <span class="page-pill" onclick="switchPage('book',this)">Book Consult</span>
+      <span class="page-pill" onclick="switchPage('reviews',this)">Reviews</span>
+      <span class="page-pill" onclick="switchPage('faqs',this)">FAQs</span>
+      <span class="page-pill" onclick="switchPage('contact',this)">Contact</span>
+      <span class="page-pill" onclick="switchPage('holistic',this)">Holistic Doctors</span>
+    </div>
+
+    <!-- ── Page content panels ── -->
+    <div class="sim-page-area">
+
+      <!-- HOME -->
+      <div class="page-panel active" id="panel-home">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Physician-Led · Telehealth-Native · Nationwide</span>
+          <h2>Your labs say you're fine.<br>Your biological age says otherwise.</h2>
+          <p>We run the tests your doctor didn't. GI-MAP, DUTCH Complete, TruAge Biological Age, Metabolomix+. Then we build a precision protocol to reverse what we find — delivered entirely via telehealth.</p>
+          <button class="pp-cta primary">Book Your Free Forensic Consultation →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🔬</div><h4>Forensic Diagnostics</h4><p>Named tests, not vague "advanced testing." We show you exactly what we're looking for.</p></div>
+          <div class="pp-card"><div class="pp-icon">🧬</div><h4>Biological Age Reversal</h4><p>TruAge testing measures your cellular age — then we build a protocol to reduce it.</p></div>
+          <div class="pp-card"><div class="pp-icon">💉</div><h4>Peptide Therapy</h4><p>Research-backed peptides for longevity, fat loss, recovery, and hormone optimization.</p></div>
+          <div class="pp-card"><div class="pp-icon">🌐</div><h4>100% Telehealth</h4><p>Nationwide. No waiting list. Doorstep lab kits. Your protocol built around your life.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> Physician-supervised</div>
+          <div class="trust-item"><span>✓</span> HIPAA-compliant platform</div>
+          <div class="trust-item"><span>✓</span> Doorstep lab collection</div>
+          <div class="trust-item"><span>✓</span> All 50 states</div>
+          <div class="trust-item"><span>✓</span> No insurance required</div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="page-panel" id="panel-about">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Our Story & Team</span>
+          <h2>Medicine reimagined by physicians who refused to accept "normal."</h2>
+          <p>HFW Longevity was built because conventional medicine kept telling patients their labs were fine — while patients knew something was wrong. Our founding physician team set out to build a practice that runs the right tests and builds real protocols.</p>
+          <button class="pp-cta secondary">Meet Our Physicians →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🩺</div><h4>Dr. [Name], MD</h4><p>Board-certified. Functional medicine fellowship. Personal health journey shaped the HFW method.</p></div>
+          <div class="pp-card"><div class="pp-icon">🧑‍⚕️</div><h4>Dr. [Name], DO</h4><p>Integrative & osteopathic background. Specializes in hormonal optimization and longevity.</p></div>
+          <div class="pp-card"><div class="pp-icon">🏛️</div><h4>Credentials & Affiliations</h4><p>IFM-certified practitioners. Members of A4M (American Academy of Anti-Aging Medicine).</p></div>
+          <div class="pp-card"><div class="pp-icon">🗺️</div><h4>States Served</h4><p>Telehealth licenses across all 50 states. No local waiting list, ever.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> MD/DO physician-led</div>
+          <div class="trust-item"><span>✓</span> IFM Certified</div>
+          <div class="trust-item"><span>✓</span> A4M Member</div>
+          <div class="trust-item"><span>✓</span> 5★ patient reviews</div>
+        </div>
+      </div>
+
+      <!-- FUNCTIONAL MEDICINE -->
+      <div class="page-panel" id="panel-funcmed">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Functional Medicine</span>
+          <h2>Conventional medicine treats symptoms.<br>We find the source.</h2>
+          <p>Functional medicine looks upstream — at the root of why your body is struggling. We map your full biology before we prescribe anything. No guesswork, no one-size-fits-all protocols.</p>
+          <button class="pp-cta primary">Start Your Forensic Health Analysis →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🔍</div><h4>Root Cause Mapping</h4><p>We identify the upstream triggers, not just the downstream symptoms.</p></div>
+          <div class="pp-card"><div class="pp-icon">📊</div><h4>Full Biology Picture</h4><p>Gut, hormones, nutrients, inflammation, and cellular aging — assessed together.</p></div>
+          <div class="pp-card"><div class="pp-icon">🗂️</div><h4>Your Protocol, Not a Template</h4><p>Every recommendation is built from your specific test results.</p></div>
+          <div class="pp-card"><div class="pp-icon">📞</div><h4>Ongoing Support</h4><p>Not a one-visit fix. Quarterly check-ins and biological age tracking included.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> Peer-reviewed protocols</div>
+          <div class="trust-item"><span>✓</span> All claims cited</div>
+          <div class="trust-item"><span>✓</span> No upselling</div>
+        </div>
+      </div>
+
+      <!-- WEIGHT LOSS -->
+      <div class="page-panel" id="panel-weightloss">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Weight Loss & Metabolic Health</span>
+          <h2>Not a diet. A metabolic reset.</h2>
+          <p>If you've tried everything and the weight won't move, the problem isn't your willpower. It's your metabolism. We test what conventional doctors skip — and build a protocol that actually works with your biology.</p>
+          <button class="pp-cta teal">Book Your Metabolic Analysis →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">⚗️</div><h4>Metabolomix+ Testing</h4><p>Cellular nutrition and metabolic function assessed at the root level.</p></div>
+          <div class="pp-card"><div class="pp-icon">💉</div><h4>Peptide-Assisted Fat Loss</h4><p>Research-backed peptides (GLP-1 family) combined with metabolic optimization.</p></div>
+          <div class="pp-card"><div class="pp-icon">🥗</div><h4>Precision Nutrition</h4><p>Built from your food sensitivity panel and metabolic test results — not a generic plan.</p></div>
+          <div class="pp-card"><div class="pp-icon">📉</div><h4>Body Composition Tracking</h4><p>Progress measured beyond the scale — lean mass, fat mass, and energy output.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> Not calorie-counting</div>
+          <div class="trust-item"><span>✓</span> Evidence-based peptides</div>
+          <div class="trust-item"><span>✓</span> Physician-supervised</div>
+        </div>
+      </div>
+
+      <!-- GUT HEALTH -->
+      <div class="page-panel" id="panel-guthealth">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Gut Health</span>
+          <h2>Your GI panel came back normal.<br>But you still bloat after every meal.</h2>
+          <p>Standard panels don't test for gut dysbiosis, leaky gut markers, or hidden pathogens. Ours do. The GI-MAP stool analysis reveals what conventional gastroenterology routinely misses.</p>
+          <button class="pp-cta primary">Get GI-MAP Tested →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🧫</div><h4>GI-MAP Stool Analysis</h4><p>Tests for pathogens, dysbiosis, leaky gut markers, and immune function in a single panel.</p></div>
+          <div class="pp-card"><div class="pp-icon">🍽️</div><h4>Food Sensitivity Panel</h4><p>IgG and IgA reactivity to 200+ foods — built into your gut restoration protocol.</p></div>
+          <div class="pp-card"><div class="pp-icon">🔗</div><h4>Gut-Brain-Longevity Axis</h4><p>We connect gut health to energy, mood, immunity, and biological age.</p></div>
+          <div class="pp-card"><div class="pp-icon">📦</div><h4>Doorstep Lab Kit</h4><p>Stool collection kit mailed to your home. No clinic visit required.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> GI-MAP certified lab</div>
+          <div class="trust-item"><span>✓</span> Conditions: IBS, SIBO, Crohn's</div>
+          <div class="trust-item"><span>✓</span> Telehealth follow-up included</div>
+        </div>
+      </div>
+
+      <!-- MENOPAUSE -->
+      <div class="page-panel" id="panel-menopause">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Menopause & Hormonal Health</span>
+          <h2>You're not imagining it. Your hormones are changing. Here's the roadmap.</h2>
+          <p>The DUTCH Complete test maps your full hormonal picture — not just estrogen and progesterone, but how your body metabolizes them. That's where conventional hormone panels stop short.</p>
+          <button class="pp-cta secondary">Book a Hormone Consultation →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🌡️</div><h4>DUTCH Complete Testing</h4><p>The most comprehensive hormone + adrenal test available. Done at home, via dried urine.</p></div>
+          <div class="pp-card"><div class="pp-icon">💊</div><h4>Bioidentical HRT</h4><p>Physician-prescribed, individually dosed — not a one-size prescription.</p></div>
+          <div class="pp-card"><div class="pp-icon">⚡</div><h4>Symptom Relief Timeline</h4><p>We set realistic expectations and track your response with retesting every 90 days.</p></div>
+          <div class="pp-card"><div class="pp-icon">📚</div><h4>Safety & Evidence Section</h4><p>Every treatment decision backed by published clinical evidence. Citations available.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> DUTCH Complete test included</div>
+          <div class="trust-item"><span>✓</span> Evidence-based HRT</div>
+          <div class="trust-item"><span>✓</span> Ongoing monitoring</div>
+        </div>
+      </div>
+
+      <!-- PEPTIDE -->
+      <div class="page-panel" id="panel-peptide">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Peptide Therapy</span>
+          <h2>The cutting edge of longevity medicine. Now available via telehealth.</h2>
+          <p>Peptides are signalling molecules that tell your body to repair, regenerate, and optimize. Research-backed, physician-supervised — and not yet offered by any competitor in this space.</p>
+          <button class="pp-cta primary">Am I a Candidate? →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🧬</div><h4>Longevity Peptides</h4><p>BPC-157, TB-500, Epithalon — repair, regeneration, and cellular optimization.</p></div>
+          <div class="pp-card"><div class="pp-icon">🏋️</div><h4>Body Composition</h4><p>CJC-1295, Ipamorelin, AOD-9604 — growth hormone support and fat metabolism.</p></div>
+          <div class="pp-card"><div class="pp-icon">🧠</div><h4>Cognitive & Neurological</h4><p>Selank, Semax — focus, stress resilience, and neuroprotection.</p></div>
+          <div class="pp-card"><div class="pp-icon">📋</div><h4>Who Is a Candidate?</h4><p>Self-qualification quiz plus physician assessment before any peptide is prescribed.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> Physician-prescribed only</div>
+          <div class="trust-item"><span>✓</span> Compounding pharmacy sourced</div>
+          <div class="trust-item"><span>✓</span> Cited clinical research</div>
+        </div>
+      </div>
+
+      <!-- TESTING -->
+      <div class="page-panel" id="panel-testing">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Advanced Testing & Diagnostics</span>
+          <h2>We test what your doctor doesn't know to order.</h2>
+          <p>Standard blood panels measure a narrow slice of your biology. Our diagnostic stack reveals what's happening at the cellular, hormonal, microbial, and epigenetic level — then we show you exactly what it means.</p>
+          <button class="pp-cta secondary">See Our Full Test Menu →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🧪</div><h4>GI-MAP</h4><p>Gut infections, dysbiosis, leaky gut markers, and immune function in one panel.</p></div>
+          <div class="pp-card"><div class="pp-icon">⏱️</div><h4>TruAge Biological Age</h4><p>Epigenetic clock test. Find out your cellular age vs. your chronological age.</p></div>
+          <div class="pp-card"><div class="pp-icon">🌡️</div><h4>DUTCH Complete</h4><p>Full sex hormone + adrenal panel via dried urine. Measures metabolites, not just levels.</p></div>
+          <div class="pp-card"><div class="pp-icon">⚗️</div><h4>Metabolomix+</h4><p>Cellular nutrition: amino acids, oxidative stress, mitochondrial function, toxin burden.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> All tests cite published research</div>
+          <div class="trust-item"><span>✓</span> Sample reports available</div>
+          <div class="trust-item"><span>✓</span> Doorstep collection kits</div>
+        </div>
+      </div>
+
+      <!-- SUPPLEMENTS -->
+      <div class="page-panel" id="panel-supplements">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Supplements</span>
+          <h2>Not a supplement store. A protocol-based dispensary.</h2>
+          <p>Every supplement HFW recommends is chosen from your test results — not a generic wellness stack. Practitioner-grade, third-party tested formulas dispensed as part of your personalized protocol.</p>
+          <button class="pp-cta primary">Shop Your Protocol →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🔬</div><h4>Protocol-Matched</h4><p>Supplements prescribed only after your diagnostic results — never a blanket recommendation.</p></div>
+          <div class="pp-card"><div class="pp-icon">✅</div><h4>Practitioner-Grade Only</h4><p>Third-party tested for potency and purity. No retail-shelf quality products.</p></div>
+          <div class="pp-card"><div class="pp-icon">📦</div><h4>Shipped to Your Door</h4><p>Auto-refill options available. Synced with your telehealth check-in schedule.</p></div>
+          <div class="pp-card"><div class="pp-icon">🔄</div><h4>Quarterly Review</h4><p>Your supplement stack is adjusted each quarter based on retesting and symptom tracking.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> NSF / USP certified brands</div>
+          <div class="trust-item"><span>✓</span> No affiliate incentives</div>
+          <div class="trust-item"><span>✓</span> Physician-recommended only</div>
+        </div>
+      </div>
+
+      <!-- BOOK -->
+      <div class="page-panel" id="panel-book">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Book Free Consultation</span>
+          <h2>Your forensic health analysis starts with a free 20-minute call.</h2>
+          <p>No sales pitch. No pressure. Just a physician-led conversation about your symptoms, your test history, and whether the HFW approach is right for you. Book in under 60 seconds.</p>
+          <button class="pp-cta teal">Choose Your Time Slot →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🗓️</div><h4>Calendly / Acuity Embed</h4><p>Direct booking widget. No form to fill. Available 7 days a week.</p></div>
+          <div class="pp-card"><div class="pp-icon">👨‍⚕️</div><h4>Who You'll Speak With</h4><p>A physician or senior health coach — not a sales rep.</p></div>
+          <div class="pp-card"><div class="pp-icon">🤝</div><h4>What Happens Next</h4><p>Post-call: test kit ordered, protocol timeline shared, follow-up scheduled.</p></div>
+          <div class="pp-card"><div class="pp-icon">🔒</div><h4>HIPAA-Compliant</h4><p>All calls and forms are HIPAA-secure. Your health data stays private.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> No payment required to book</div>
+          <div class="trust-item"><span>✓</span> Cancel anytime</div>
+          <div class="trust-item"><span>✓</span> HIPAA compliant</div>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="page-panel" id="panel-reviews">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Patient Reviews</span>
+          <h2>Real patients. Real lab results. Real outcomes.</h2>
+          <p>Not testimonials with no context. Every review here shows the condition, the tests run, and the measurable outcome — including biological age before and after.</p>
+          <button class="pp-cta secondary">Read Full Case Studies →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">⭐</div><h4>Verified Google Reviews</h4><p>Embedded live feed from Google. Authenticated, unedited.</p></div>
+          <div class="pp-card"><div class="pp-icon">📊</div><h4>Before/After Lab Markers</h4><p>Case studies showing real biomarker changes — with patient consent.</p></div>
+          <div class="pp-card"><div class="pp-icon">🧬</div><h4>TruAge Reversal Stories</h4><p>"I was 48 chronologically. My biological age came back 41 after 6 months."</p></div>
+          <div class="pp-card"><div class="pp-icon">🎥</div><h4>Video Testimonials</h4><p>Short patient videos on gut health, menopause, metabolic reset, and peptide results.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> Verified profiles only</div>
+          <div class="trust-item"><span>✓</span> Review schema markup</div>
+          <div class="trust-item"><span>✓</span> Condition-specific filters</div>
+        </div>
+      </div>
+
+      <!-- FAQS -->
+      <div class="page-panel" id="panel-faqs">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Frequently Asked Questions</span>
+          <h2>"My doctor said everything's fine. So why do you feel terrible?"</h2>
+          <p>That question is the reason HFW Longevity exists. Below are the questions patients ask most — answered plainly, with no jargon and no hedging.</p>
+          <button class="pp-cta primary">Still have questions? Book a call →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🔬</div><h4>Why are your tests different?</h4><p>Standard labs measure blood markers in a narrow range. We test at the cellular, hormonal, microbial, and epigenetic level.</p></div>
+          <div class="pp-card"><div class="pp-icon">🌐</div><h4>Is telehealth as effective?</h4><p>For functional medicine, yes. Lab kits arrive at your door. Consultations are over video. Results are the same.</p></div>
+          <div class="pp-card"><div class="pp-icon">💳</div><h4>Do you accept insurance?</h4><p>We are fee-for-service. Many patients use HSA/FSA. We provide superbills for potential reimbursement.</p></div>
+          <div class="pp-card"><div class="pp-icon">🗺️</div><h4>What states do you serve?</h4><p>We hold telehealth licenses across all 50 states. If you're in the US, we can see you.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> FAQPage schema markup</div>
+          <div class="trust-item"><span>✓</span> Rich snippet optimised</div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="page-panel" id="panel-contact">
+        <div class="pp-hero h-light">
+          <span class="pp-eyebrow">Contact</span>
+          <h2>We respond within one business day. Usually faster.</h2>
+          <p>Have a question before booking? Want to know if your insurance situation works? Reach out. A real person from our care team will reply — not an automated bot.</p>
+          <button class="pp-cta secondary">Send a Message →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">📬</div><h4>Contact Form</h4><p>HIPAA-compliant. Name, email, and message only. No sensitive health data on this form.</p></div>
+          <div class="pp-card"><div class="pp-icon">📞</div><h4>Phone</h4><p>(888) 123-4567 · Mon–Fri, 9am–6pm EST. Voicemail checked same business day.</p></div>
+          <div class="pp-card"><div class="pp-icon">📧</div><h4>Email</h4><p>hello@hfwlongevity.com · We reply within 24 business hours.</p></div>
+          <div class="pp-card"><div class="pp-icon">⏱️</div><h4>Response Time Promise</h4><p>All inquiries acknowledged within 1 business day. Full reply within 2.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> HIPAA-compliant form</div>
+          <div class="trust-item"><span>✓</span> Real humans reply</div>
+        </div>
+      </div>
+
+      <!-- HOLISTIC DOCTORS -->
+      <div class="page-panel" id="panel-holistic">
+        <div class="pp-hero h-dark">
+          <span class="pp-eyebrow">Holistic Doctors</span>
+          <h2>What makes a holistic MD different — and how to find one that actually works.</h2>
+          <p>This page exists for the searcher who typed "holistic doctor near me" and got overwhelmed. We explain what to look for, what credentials matter, and why telehealth changes everything about access.</p>
+          <button class="pp-cta primary">Find Your HFW Physician →</button>
+        </div>
+        <div class="pp-body">
+          <div class="pp-card"><div class="pp-icon">🌿</div><h4>What Is a Holistic MD?</h4><p>Not a wellness influencer. A board-certified physician who treats the whole system, not the isolated symptom.</p></div>
+          <div class="pp-card"><div class="pp-icon">📋</div><h4>Credentials to Look For</h4><p>IFM certification, A4M membership, functional medicine fellowship — what each means.</p></div>
+          <div class="pp-card"><div class="pp-icon">🗺️</div><h4>Why Telehealth Wins</h4><p>"Near me" used to limit you to whoever was local. Now the best physicians are one video call away.</p></div>
+          <div class="pp-card"><div class="pp-icon">🏅</div><h4>HFW Physician Profiles</h4><p>See full credentials, specialties, and personal health philosophies for our entire team.</p></div>
+        </div>
+        <div class="pp-trust">
+          <div class="trust-item"><span>✓</span> SEO: "holistic doctor near me"</div>
+          <div class="trust-item"><span>✓</span> Targets telehealth intent</div>
+          <div class="trust-item"><span>✓</span> E-E-A-T optimised</div>
+        </div>
+      </div>
+
+    </div><!-- end sim-page-area -->
+
+    <!-- ── Simulated Footer ── -->
+    <div class="sim-footer">
+      <div class="sim-footer-top">
+        <div class="sim-footer-brand">
+          <div class="footer-logo-name">HFW Longevity</div>
+          <div class="footer-logo-sub">Heal From Within</div>
+          <p>Physician-led functional medicine and longevity optimization — delivered via telehealth to all 50 states. We test what others miss. We optimize what others ignore.</p>
+          <div class="footer-socials">
+            <div class="footer-social-btn">𝕏</div>
+            <div class="footer-social-btn">in</div>
+            <div class="footer-social-btn">📷</div>
+            <div class="footer-social-btn">▶</div>
+          </div>
+        </div>
+        <div class="sim-footer-col">
+          <h5>Services</h5>
+          <a onclick="switchPage('funcmed')">Functional Medicine</a>
+          <a onclick="switchPage('weightloss')">Weight Loss & Metabolic Health</a>
+          <a onclick="switchPage('guthealth')">Gut Health</a>
+          <a onclick="switchPage('menopause')">Menopause & Hormonal Health</a>
+          <a onclick="switchPage('peptide')">Peptide Therapy</a>
+          <a onclick="switchPage('testing')">Advanced Testing</a>
+          <a onclick="switchPage('supplements')">Supplements</a>
+        </div>
+        <div class="sim-footer-col">
+          <h5>About</h5>
+          <a onclick="switchPage('about')">Our Team</a>
+          <a onclick="switchPage('reviews')">Patient Reviews</a>
+          <a onclick="switchPage('holistic')">Holistic Doctors</a>
+          <h5 style="margin-top:16px;">Resources</h5>
+          <a onclick="switchPage('faqs')">FAQs</a>
+          <a onclick="switchPage('contact')">Contact</a>
+        </div>
+        <div class="sim-footer-col">
+          <h5>Get Started</h5>
+          <a onclick="switchPage('book')" style="color:var(--teal-400);font-weight:600;">📅 Book Free Consultation</a>
+          <a>📞 (888) 123-4567</a>
+          <a>✉️ hello@hfwlongevity.com</a>
+          <h5 style="margin-top:16px;">Accepted Payment</h5>
+          <a>HSA / FSA Cards</a>
+          <a>All Major Credit Cards</a>
+          <a>Superbills for Insurance</a>
+        </div>
+      </div>
+      <div class="sim-footer-bottom">
+        <div class="copy">© 2025 HFW Longevity · All rights reserved</div>
+        <div class="footer-legal">
+          <a>Privacy Policy</a>
+          <a>Terms of Service</a>
+          <a>Medical Disclaimer</a>
+          <a>HIPAA Notice</a>
+          <a>Sitemap</a>
+        </div>
+      </div>
+    </div>
+    <!-- end sim-footer -->
+
+  </div><!-- end site-preview -->
+
+</div><!-- end container -->
+</div><!-- end #sitenav -->
+
 <footer>
   <strong>HFW Longevity — Internal Web Strategy Document</strong> · Prepared for client web build · Confidential
 </footer>
 
 <script>
   function showSection(id, btn) {
-    // Hide all sections
     document.querySelectorAll('.section-content').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    // Update tab buttons
     document.querySelectorAll('.tab-btn, .nav-links a').forEach(b => b.classList.remove('active'));
     if (btn) btn.classList.add('active');
-    // Re-trigger fade-in
     document.querySelectorAll('#' + id + ' .fade-in').forEach((el, i) => {
       el.style.animation = 'none';
-      el.offsetHeight; // force reflow
+      el.offsetHeight;
       el.style.animation = '';
       el.style.animationDelay = (i * 0.06) + 's';
     });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function togglePhase(headerEl) {
     const card = headerEl.closest('.phase-card');
     card.classList.toggle('open');
+  }
+
+  function switchPage(pageId, pillEl) {
+    // Hide all panels
+    document.querySelectorAll('.page-panel').forEach(p => p.classList.remove('active'));
+    const panel = document.getElementById('panel-' + pageId);
+    if (panel) panel.classList.add('active');
+
+    // Update pills
+    document.querySelectorAll('.page-pill').forEach(p => p.classList.remove('active'));
+    // Find pill by onclick match if not passed
+    if (pillEl) {
+      pillEl.classList.add('active');
+    } else {
+      document.querySelectorAll('.page-pill').forEach(p => {
+        if (p.getAttribute('onclick') && p.getAttribute('onclick').includes("'" + pageId + "'")) {
+          p.classList.add('active');
+        }
+      });
+    }
+
+    // Update sim nav active state
+    document.querySelectorAll('.sim-nav-link').forEach(l => l.classList.remove('active-page'));
   }
 </script>
 </body>
